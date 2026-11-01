@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HAPPY BIRTHDAY!!!</title>
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #ffb6d9, #d9b3ff, #fff0a6);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #8a007a;
+}
+
+h1 {
+    font-size: 48px;
+    color: #ff008c;
+    text-shadow: 3px 3px white;
+}
+
+h2 {
+    color: #a000a0;
+}
+
+.container {
+    background: white;
+    border: 5px dashed #ff65b5;
+    border-radius: 30px;
+    padding: 25px;
+    margin: 30px auto;
+    width: 80%;
+    max-width: 650px;
+    box-shadow: 0 10px 25px #0002;
+}
+
+button {
+    background: #ff36a5;
+    color: white;
+    border: 3px solid white;
+    border-radius: 20px;
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+    box-shadow: 0 5px #c00070;
+}
+
+button:hover {
+    transform: scale(1.08) rotate(-2deg);
+}
+
+button:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+.marquee {
+    font-size: 23px;
+    font-weight: bold;
+    color: red;
+    padding: 15px;
+}
+
+#cake {
+    font-size: 110px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#cake:hover {
+    transform: scale(1.15);
+}
+
+#message {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff008c;
+    min-height: 60px;
+}
+
+#gift {
+    font-size: 90px;
+}
+
+#popup {
+    display: none;
+    position: fixed;
+    background: white;
+    border: 5px solid #ff36a5;
+    border-radius: 25px;
+    padding: 25px;
+    width: 75%;
+    max-width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    box-shadow: 0 0 0 1000px #0008;
+}
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    font-size: 25px;
+    animation: fall 3s linear forwards;
+    pointer-events: none;
+    z-index: 50;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+#progress {
+    width: 100%;
+    background: #ffd5ed;
+    height: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#bar {
+    width: 0%;
+    height: 100%;
+    background: #ff008c;
+    transition: 0.3s;
+}
+
+#counter {
+    font-size: 25px;
+    color: #ff008c;
+}
+
+.profile-img {
+    width: 100%;
+    max-width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border: 6px solid white;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px #0003;
+}
+
+.profile-card {
+    display: inline-block;
+    background: #fff0f8;
+    padding: 20px;
+    border: 5px solid #ff65b5;
+    border-radius: 25px;
+    max-width: 350px;
+}
+
+footer {
+    padding: 30px;
+    color: #9c007d;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="marquee">
+MINH KHÁNH ƠI, HÚUUUUUUUUUUUUUU!!!!!
+</div>
+
+<h1>🎉 HAPPY BIRTHDAY 🎉</h1>
+
+<h2>CHÚC MỪNG...!!!</h2>
+<H3> SINH NHẬTTTTTTTTTTTT</H3>
+
+
+<div class="container">
+
+    <h2>📢 THÔNG BÁO KHẨN CẤP</h2>
+
+    <p>
+        Hôm nay là ngày một con trố húi xuất hiện trên Trái Đất.
+        <br>
+    </p>
+
+    <div >
+        <IMG src="d:\html\mk.jpg" alt="Ảnh nhân vật chính" class="profile-img">
+    </div>
+
+    <h2>ai vậy?</h2>
+
+    <p>jv</p>
+
+    <button onclick="openPopup()">
+        dcm hâhhahahaha📂
+    </button>
+
+</div>
+
+<!-- BÁNH KEM -->
+
+<div class="container">
+
+    <h2>🎂 NGHI THỨC "BLOW JOB"</h2>
+
+    <p>Nhấn vào chiếc bánh để thổi nến nhé!</p>
+
+    <div id="cake" onclick="blowCake()">🎂</div>
+
+    <p id="cakeText">
+        Hãy ước một điều thật lớn lao!
+    </p>
+
+    <p id="cakeResult"></p>
+
+</div>
+
+<!-- NHẬN QUÀ -->
+
+<div class="container">
+
+    <h2>🎁 HỆ THỐNG PHÁT QUÀ</h2>
+
+    <p>
+        Móc 10 lần để nhận quà.
+        <br>
+        MÓC !
+    </p>
+
+    <div id="counter">0 / 10</div>
+
+    <div id="progress">
+        <div id="bar"></div>
+    </div>
+
+    <button onclick="openGift()">
+        Tích cực quay tay
+        <br>
+        Vận may sẽ tới
+    </button>
+
+    <div id="gift"></div>
+
+    <p id="giftText"></p>
+
+</div>
+
+<!-- LỜI CHÚC -->
+
+<div class="container">
+
+    <h2>💌 LỜI CHÚC TỪ Nkli</h2>
+
+    <div id="message">
+        nhớ đọc hết nha...<3333
+        <br>
+        tại nó random:)))
+    </div>
+
+    <button onclick="randomWish()">
+        BEST WISHES TO YOU ✨
+    </button>
+
+</div>
+
+
+
+    <h3>my last message</h3>
+
+    <p>
+        happy birthday to my girl. hope u will have a best day of your life
+        <br>
+        sometimes i always think that time flies so fast, we both have grown up and changed a lot
+        <br>
+         but somewhere in bottom of my heart, we're still the same as we first met.
+         <br>
+         we do silly things, talk shit about someone or just yap about random things.
+         <br>
+         we still somehow connect eventhough we're far apart.
+         <br>
+         you have a piece of mine and so do i. 
+         <br>
+        i have said this but i hope you will have a best day of your life, and i hope you will be happy and healthy.
+        <br>
+        <br>
+        <br>
+        from nkli!
+
+<!-- POPUP HỒ SƠ -->
+
+<div id="popup">
+
+    <h2>📂 HỒ SƠ MẬT</h2>
+
+    <img src="d:\html\mika.jpg" alt="Ảnh nhân vật chính" class="profile-img">
+
+    <p>
+        Tên: Đồng Thị Minh Khánh (ĐIỆN THOẠI MẬT KHẨU)
+        <br>
+        Thành tựu: mới được 7.0 IELTS
+        <br>
+        còn j nữa không ? tui kbit nữa
+    </p>
+
+    <button onclick="closePopup()">
+        ULATR
+    </button>
+
+</div>
+
+<footer>
+    MADE WITH LOVE ❤️ AND A LITTLE BIT OF BRAIN DAMAGE
+
+    <br><br>
+
+    © 2026 Birthday Corporation.
+    All rights reserved. Không hoàn tiền.
+</footer>
+
+<script>
+
+// THỔI NẾN
+
+let blown = false;
+
+function blowCake() {
+
+    if (!blown) {
+
+        blown = true;
+
+        document.getElementById("cake").innerHTML = "🍰";
+
+        document.getElementById("cakeText").innerHTML =
+            "Phun hết nước bọt vào mặt t r";
+
+        document.getElementById("cakeResult").innerHTML =
+            " đỗ đại học mơ ước nhooo<3333";
+
+        confetti();
+
+    } else {
+
+        document.getElementById("cakeResult").innerHTML =
+            "Chúc minh khánh có một ngày sinh nhật thiệt thiệt thiệt hạnh phúc !!><><>< //ảnh bụm lồn//";
+
+    }
+}
+
+
+// NHẬN QUÀ 10 LẦN
+
+let clicks = 0;
+
+function openGift() {
+
+    if (clicks < 10) {
+
+        clicks++;
+
+        document.getElementById("counter").innerHTML =
+            clicks + " / 10";
+
+        document.getElementById("bar").style.width =
+            (clicks * 10) + "%";
+
+        if (clicks < 10) {
+
+            document.getElementById("giftText").innerHTML =
+                "Móc chưa đủ 10 lần đã yếu vậy r ak?";
+
+        } else {
+
+            document.getElementById("gift").innerHTML = "💸";
+
+            document.getElementById("giftText").innerHTML =
+                "STK~~~ 💗";
+
+            confetti();
+
+            alert("QUÀ ĐÃ ĐƯỢC GỬI! VUI LÒNG KIỂM TRA TÀI KHOẢN.");
+
+        }
+
+    } else {
+
+        document.getElementById("giftText").innerHTML =
+            "sống tiết kiệm...";
+
+    }
+
+}
+
+
+// LỜI CHÚC NGẪU NHIÊN
+
+function randomWish() {
+
+    let wishes = [
+
+        "TUI THƯƠNG BÀ NHÌU NHÌU NHÌU NHÌU LẮM~~~",
+
+        "tuổi mới tui chúc minh khánh có thêm những điều tốt đẹp tới với bản thân",
+
+        "mong rằng minh khánh lớn thêm 1 tuổi sẽ biết nghĩ cho bản thân mình hơn",
+
+        "Đừng quá suy nghĩ nhiều về những điều đâu xa, khiến mình buồn...",
+
+        "chăm sóc bản thân tốt hơn, không nghĩ về sh, chỉ cần nghĩ hôm nay ăn gì là được~~",
+
+        "minh khánh ơi, tui vui lắm. cảm ơn vì đã xuất hiện trên đời này, cảm ơn vì đã xuất hiện trong cuộc đời tui",
+
+        "cảm ơn vì đã làm bạn với tui, yap đầy thứ trên đời, thứ mà tui chưa từng nghĩ tới trước khi gặp minh khánh!",
+
+        "chúc mừng sinh nhật, minh khánh, mika!",
+
+        "sinh nhật hãy ăn đồ ăn ngon, nhận được nhiều quàaaa, và đừng nghĩ gì khiến mình phiền lòng nhaaa~~",
+
+        "i love you..."
+
+    ];
+
+    let random = Math.floor(Math.random() * wishes.length);
+
+    document.getElementById("message").innerHTML =
+        wishes[random];
+
+    confetti();
+
+}
+
+
+
+// POPUP
+
+function openPopup() {
+
+    document.getElementById("popup").style.display = "block";
+
+}
+
+function closePopup() {
+
+    document.getElementById("popup").style.display = "none";
+
+}
+
+
+// CONFETTI
+
+function confetti() {
+
+    let icons = ["🎉", "🎊", "💗", "✨", "🌸", "💸", "🐸"];
+
+    for (let i = 0; i < 40; i++) {
+
+        let piece = document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.innerHTML =
+            icons[Math.floor(Math.random() * icons.length)];
+
+        piece.style.left = Math.random() * 100 + "vw";
+
+        piece.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(function() {
+
+            piece.remove();
+
+        }, 5000);
+
+    }
+
+}
+
+
+// PHÁO HOA KHI MỞ TRANG
+
+window.onload = function() {
+
+    confetti();
+
+};
+
+</script>
+
+</body>
+</html>
