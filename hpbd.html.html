@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BIRTHDAY CHAOS!!!</title>
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #ffb6d9, #d9b3ff, #fff0a6);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+    color: #8a007a;
+}
+
+h1 {
+    font-size: 48px;
+    color: #ff008c;
+    text-shadow: 3px 3px white;
+}
+
+h2 {
+    color: #a000a0;
+}
+
+.container {
+    background: white;
+    border: 5px dashed #ff65b5;
+    border-radius: 30px;
+    padding: 25px;
+    margin: 30px auto;
+    width: 80%;
+    max-width: 650px;
+    box-shadow: 0 10px 25px #0002;
+}
+
+button {
+    background: #ff36a5;
+    color: white;
+    border: 3px solid white;
+    border-radius: 20px;
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+    box-shadow: 0 5px #c00070;
+}
+
+button:hover {
+    transform: scale(1.08) rotate(-2deg);
+}
+
+button:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+.marquee {
+    font-size: 23px;
+    font-weight: bold;
+    color: red;
+    padding: 15px;
+}
+
+#cake {
+    font-size: 110px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#cake:hover {
+    transform: scale(1.15);
+}
+
+#message {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff008c;
+    min-height: 60px;
+}
+
+#gift {
+    font-size: 90px;
+}
+
+#popup {
+    display: none;
+    position: fixed;
+    background: white;
+    border: 5px solid #ff36a5;
+    border-radius: 25px;
+    padding: 25px;
+    width: 75%;
+    max-width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    box-shadow: 0 0 0 1000px #0008;
+}
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    font-size: 25px;
+    animation: fall 3s linear forwards;
+    pointer-events: none;
+    z-index: 50;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+#progress {
+    width: 100%;
+    background: #ffd5ed;
+    height: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#bar {
+    width: 0%;
+    height: 100%;
+    background: #ff008c;
+    transition: 0.3s;
+}
+
+#counter {
+    font-size: 25px;
+    color: #ff008c;
+}
+
+.meme {
+    font-size: 80px;
+}
+
+footer {
+    padding: 30px;
+    color: #9c007d;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="marquee">
+🚨 BREAKING NEWS: MỘT SINH VẬT ĐÃ GIÀ THÊM 1 TUỔI 🚨
+</div>
+
+<h1>🎉 HAPPY BIRTHDAY 🎉</h1>
+
+<h2>CHÚC MỪNG NGÀY BẠN ĐƯỢC PHÁT HÀNH!!!</h2>
+
+<div class="container">
+
+    <h2>📢 THÔNG BÁO KHẨN CẤP</h2>
+
+    <p>
+        Hôm nay là ngày một cá thể đặc biệt xuất hiện trên Trái Đất.
+        <br><br>
+        Sau nhiều năm thử nghiệm, sản phẩm vẫn chưa hoàn thiện.
+        Tuy nhiên nhà sản xuất quyết định tiếp tục bảo hành.
+    </p>
+
+    <div class="meme">🐸👑</div>
+
+    <h2>NHÂN VẬT CHÍNH HÔM NAY</h2>
+    <p>Đẹp trai/xinh gái nhất hệ Mặt Trời (theo lời mẹ)</p>
+
+    <button onclick="openPopup()">
+        XEM HỒ SƠ CÁ NHÂN 📂
+    </button>
+
+</div>
+
+<div class="container">
+
+    <h2>🎂 NGHI THỨC THỔI NẾN</h2>
+
+    <p>Nhấn vào chiếc bánh để thổi nến nhé!</p>
+
+    <div id="cake" onclick="blowCake()">🎂</div>
+
+    <p id="cakeText">
+        Hãy ước một điều thật lớn lao!
+    </p>
+
+    <p id="cakeResult"></p>
+
+</div>
+
+<div class="container">
+
+    <h2>🎁 HỆ THỐNG PHÁT QUÀ</h2>
+
+    <p>
+        Bạn cần xác nhận mình xứng đáng được nhận quà.
+        <br>
+        Vui lòng bấm nút 10 lần.
+    </p>
+
+    <div id="counter">0 / 10</div>
+
+    <div id="progress">
+        <div id="bar"></div>
+    </div>
+
+    <button onclick="openGift()">
+        NHẬN QUÀ NGAY 🎁
+    </button>
+
+    <div id="gift"></div>
+    <p id="giftText"></p>
+
+</div>
+
+<div class="container">
+
+    <h2>💌 LỜI CHÚC TỪ VŨ TRỤ</h2>
+
+    <div id="message">
+        Đang chờ tín hiệu từ các vì sao...
+    </div>
+
+    <button onclick="randomWish()">
+        TRIỆU HỒI LỜI CHÚC ✨
+    </button>
+
+</div>
+
+<div class="container">
+
+    <h2>🚨 KIỂM TRA TÌNH TRẠNG TUỔI TÁC</h2>
+
+    <p>Hệ thống cần kiểm tra một số thông tin quan trọng.</p>
+
+    <button onclick="ageCheck()">
+        KIỂM TRA NGAY
+    </button>
+
+    <p id="ageResult"></p>
+
+</div>
+
+<div class="container">
+
+    <h2>📸 GÓC TƯỞNG NIỆM TUỔI TRẺ</h2>
+
+    <div class="meme">🐸😭🐸</div>
+
+    <h3>Tuổi trẻ đã ra đi nhưng deadline vẫn còn đó.</h3>
+
+    <p>
+        Không sao, ít nhất hôm nay bạn được quyền ăn bánh
+        mà không cần cảm thấy tội lỗi.
+    </p>
+
+    <div class="meme">💅🏻👑💅🏻</div>
+
+</div>
+
+<footer>
+    MADE WITH LOVE ❤️ AND A LITTLE BIT OF BRAIN DAMAGE
+
+    <br><br>
+    © 2026 Birthday Corporation.
+    All rights reserved. Không hoàn tiền.
+</footer>
+
+<!-- POPUP -->
+<div id="popup">
+    <h2>📂 HỒ SƠ MẬT</h2>
+    <div style="font-size:65px">🕵️</div>
+    <p>
+        Tên: Nhân vật chính<br>
+        Chức vụ: Cục cưng của vũ trụ<br>
+        Tài sản: 1 cái mạng<br>
+        Tình trạng: Đang già đi<br>
+        Độ đáng yêu: Vượt quá giới hạn cho phép
+    </p>
+    <button onclick="closePopup()">ĐÓNG HỒ SƠ</button>
+</div>
+
+<script>
+
+// THỔI NẾN
+let blown = false;
+
+function blowCake() {
+    if (!blown) {
+        blown = true;
+        document.getElementById("cake").innerHTML = "🍰";
+        document.getElementById("cakeText").innerHTML =
+            "PHÙÙÙ! NẾN ĐÃ ĐƯỢC THỔI!";
+        document.getElementById("cakeResult").innerHTML =
+            "🎉 Ước mơ sẽ thành hiện thực! (Có thể)";
+        confetti();
+    } else {
+        document.getElementById("cakeResult").innerHTML =
+            "Bánh đã thổi rồi, không được thổi lại để trốn tuổi đâu!";
+    }
+}
+
+// NHẬN QUÀ 10 LẦN
+let clicks = 0;
+
+function openGift() {
+    if (clicks < 10) {
+        clicks++;
+        document.getElementById("counter").innerHTML =
+            clicks + " / 10";
+
+        document.getElementById("bar").style.width =
+            (clicks * 10) + "%";
+
+        if (clicks < 10) {
+            document.getElementById("giftText").innerHTML =
+                "Chưa đủ thành tâm! Bấm tiếp đi 😭";
+        } else {
+            document.getElementById("gift").innerHTML = "💸";
+            document.getElementById("giftText").innerHTML =
+                "CHÚC MỪNG! BẠN NHẬN ĐƯỢC 1 TỶ... TÌNH YÊU 💗";
+            confetti();
+            alert("QUÀ ĐÃ ĐƯỢC GỬI! VUI LÒNG KIỂM TRA TÀI KHOẢN TÌNH CẢM.");
+        }
+    } else {
+        document.getElementById("giftText").innerHTML =
+            "Đã nhận quà rồi còn tham lam!";
+    }
+}
+
+// LỜI CHÚC RANDOM
+function randomWish() {
+    let wishes = [
+        "Chúc bạn giàu đến mức không biết tiêu tiền vào đâu!",
+        "Chúc bạn xinh đẹp đến mức camera phải tự động filter!",
+        "Chúc bạn không bao giờ gặp deadline vào lúc 23:59!",
+        "Chúc bạn ăn ngon, ngủ kỹ, tiền tự tìm đến!",
+        "Chúc bạn gặp toàn người tử tế, né toàn người báo!",
+        "Chúc bạn tình duyên nở rộ như hoa, không phải như nợ!",
+        "Chúc bạn luôn vui vẻ và không bao giờ phải reset cuộc đời!",
+        "Chúc bạn có tất cả, trừ những bài kiểm tra bất ngờ!"
+    ];
+
+    let random = Math.floor(Math.random() * wishes.length);
+
+    document.getElementById("message").innerHTML =
+        wishes[random];
+
+    confetti();
+}
+
+// KIỂM TRA TUỔI
+function ageCheck() {
+    let messages = [
+        "⚠️ CẢNH BÁO: Hệ thống phát hiện dấu hiệu trưởng thành.",
+        "🚨 Bạn đã chính thức hết hạn sử dụng tuổi trẻ!",
+        "❌ Không tìm thấy dấu hiệu giàu có. Vui lòng kiểm tra lại.",
+        "💀 Tuổi mới nhưng vẫn chưa biết mình đang làm gì.",
+        "🏆 Chúc mừng! Bạn vẫn còn sống và đó là thành tựu!"
+    ];
+
+    let random = Math.floor(Math.random() * messages.length);
+
+    document.getElementById("ageResult").innerHTML =
+        messages[random];
+}
+
+// POPUP
+function openPopup() {
+    document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+// CONFETTI
+function confetti() {
+    let icons = ["🎉", "🎊", "💗", "✨", "🌸", "💸", "🐸"];
+
+    for (let i = 0; i < 40; i++) {
+        let piece = document.createElement("div");
+
+        piece.className = "confetti";
+        piece.innerHTML =
+            icons[Math.floor(Math.random() * icons.length)];
+
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(function() {
+            piece.remove();
+        }, 5000);
+    }
+}
+
+// TỰ ĐỘNG BẮN PHÁO HOA KHI VÀO TRANG
+window.onload = function() {
+    confetti();
+};
+
+</script>
+
+</body>
+</html>
